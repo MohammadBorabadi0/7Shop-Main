@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 
-// Context
-import { useFilter } from "../Providers/Context/filter_context";
+// Components 
 import Filter from "./Filter";
 import ProductItem from "./ProductItem";
+// Layout
+import Layout from "../Layout/Layout";
+// Context
+import { useFilter } from "../Providers/Context/filter_context";
 
 const ProductList = () => {
   const [showFilter, setShowFilter] = useState(false);
   const { filtered_products } = useFilter();
 
   return (
-    <>
+    <Layout>
       <div className="flex items-center justify-between mb-4 px-3 xl:px-0">
         <h4 className="text-sm lg:text-xl text-slate-400">
           {filtered_products.length} Products Found
@@ -34,7 +37,7 @@ const ProductList = () => {
           </div>
         </section>
       </main>
-    </>
+    </Layout>
   );
 };
 

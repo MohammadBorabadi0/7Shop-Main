@@ -14,7 +14,7 @@ const ProductItem = ({ product, index }) => {
   return (
     <section className="shadow-md hover:shadow-xl cursor-pointer rounded-md py-8 bg-white">
       <div className="flex justify-end items-center px-6">
-        <BiHeart />
+        <BiHeart size='28px' />
       </div>
       <div>
         <img src={product.imageURL} alt={product.name} />
