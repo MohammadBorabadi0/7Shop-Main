@@ -5,12 +5,15 @@ import App from "./App";
 // Context
 import ProductsProvider from "./Providers/Context/products_context";
 import FilterProvider from "./Providers/Context/filter_context";
+import CartProvider from "./Providers/Context/cart_context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ProductsProvider>
     <FilterProvider>
-      <App />
+      <CartProvider>
+        <App />
+      </CartProvider>
     </FilterProvider>
   </ProductsProvider>
 );

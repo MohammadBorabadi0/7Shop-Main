@@ -1,5 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
 
+// Reducer 
+import filter_reducer from "../Reducers/filter_reducer";
+
 // InitialState
 const initialState = {
   filtered_products: [],
@@ -21,7 +24,7 @@ const FilterContext = createContext();
 
 // Provider
 const FilterProvider = ({ children }) => {
-  const [state, dispatch] = useReducer();
+  const [state, dispatch] = useReducer(filter_reducer, initialState);
 
   return (
     <FilterContext.Provider value={{ ...state, dispatch }}>
