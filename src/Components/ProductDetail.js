@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import data from "../db.json";
 import { useParams, useNavigate } from "react-router-dom";
 
+// Layout
+import DetailLayout from "../Layout/DetailLayout";
+
 // Context
 import { useCart } from "../Providers/Context/cart_context";
 import { useFilter } from "../Providers/Context/filter_context";
@@ -10,6 +13,7 @@ import { useFilter } from "../Providers/Context/filter_context";
 import { FiChevronLeft } from "react-icons/fi";
 import { BiCart } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
+import ProductDetailButtons from "./ProductDetailButtons";
 
 const ProductDetail = () => {
   // useState
@@ -24,7 +28,7 @@ const ProductDetail = () => {
 
   if (product)
     return (
-      <>
+      <DetailLayout>
         <section className="flex flex-col lg:flex-row bg-gray-300 md:bg-white md:rounded-xl md:overflow-hidden">
           <div className="flex flex-col sm:flex-1 border-r">
             <div className="flex sm:hidden justify-between items-center text-3xl text-slate-700 p-6">
@@ -34,7 +38,7 @@ const ProductDetail = () => {
               <span className="block cursor-pointer relative">
                 <BiCart size="25px" />
                 <span className="absolute top-[-10px] right-[-13px] bg-red-700 text-white px-1.5 rounded-md text-sm">
-                  {numberOfAmounts === 1 ? null : numberOfAmounts}
+                  {numberOfAmounts === 0 ? null : numberOfAmounts}
                 </span>
               </span>
             </div>
@@ -59,6 +63,7 @@ const ProductDetail = () => {
                     className={`px-2 py-1 bg-gray-100 shadow-lg rounded-md font-semibold text-lg ${
                       selectedSize === item && "bg-orange-600 text-white"
                     }`}
+                    onClick={() => setSelectedSize(item)}
                   >
                     {item}
                   </button>
@@ -84,9 +89,13 @@ const ProductDetail = () => {
                 {product.description}
               </p>
             </div>
+            <ProductDetailButtons
+              selectedSize={selectedSize}
+              product={product}
+            />
           </div>
         </section>
-      </>
+      </DetailLayout>
     );
 };
 
