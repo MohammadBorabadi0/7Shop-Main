@@ -12,9 +12,12 @@ const ProductItem = ({ product, index }) => {
   const navigate = useNavigate();
 
   return (
-    <section className="shadow-md hover:shadow-xl cursor-pointer rounded-md py-8 bg-white">
+    <section
+      className="shadow-md hover:shadow-xl cursor-pointer rounded-md py-8 bg-white"
+      onClick={() => navigate(`/product/${product.id}`)}
+    >
       <div className="flex justify-end items-center px-6">
-        <BiHeart size='28px' />
+        <BiHeart size="28px" />
       </div>
       <div>
         <img src={product.imageURL} alt={product.name} />
