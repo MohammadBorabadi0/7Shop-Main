@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 
-// Components 
+// Icons
+import { BiSliderAlt } from "react-icons/bi";
+
+// Components
 import Filter from "./Filter";
 import ProductItem from "./ProductItem";
 // Layout
@@ -18,9 +21,14 @@ const ProductList = () => {
         <h4 className="text-sm lg:text-xl text-slate-400">
           {filtered_products.length} Products Found
         </h4>
-        <div className="hidden lg:flex items-center gap-8">Sort</div>
-        <div className="flex lg:hidden items-center gap-2 border border-slate-400 rounded-full px-4 py-1 cursor-pointer">
-          Filter
+        <div className="hidden lg:flex items-center gap-8">
+          <button
+            className="flex items-center gap-2"
+            onClick={() => setShowFilter(!showFilter)}
+          >
+            {showFilter ? "Hide Filters" : "Show Filters"} <BiSliderAlt />
+          </button>
+          Sort
         </div>
       </div>
       <main className="flex gap-4">

@@ -1,5 +1,10 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
-import { LOAD_PRODUCTS } from "../../actions";
+import {
+  FILTER_PRODUCTS,
+  LOAD_PRODUCTS,
+  SORT_PRODUCTS,
+  UPDATE_SORT,
+} from "../../actions";
 
 // Reducer
 import filter_reducer from "../Reducers/filter_reducer";
@@ -33,8 +38,23 @@ const FilterProvider = ({ children }) => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
 
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
+    dispatch({ type: SORT_PRODUCTS });
+  }, [products, state.sort, state.filters]);
+
+  const updateSort = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    if (!value) {
+      value = e.target.textContent;
+    }
+    dispatch({ type: UPDATE_SORT, payload: { name, value } });
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state, dispatch }}>
+    <FilterContext.Provider value={{ ...state, dispatch, updateSort }}>
       {children}
     </FilterContext.Provider>
   );
