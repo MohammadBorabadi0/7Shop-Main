@@ -28,9 +28,9 @@ const MobileNavbar = () => {
     dispatch({ type: CLEAR_SEARCH_BOX });
   };
 
-  //   {0-640px}
   return (
     <>
+      {/* {0-640px} */}
       <header className="flex md:hidden sticky bg-primary top-0 py-3 px-5 mb-5 items-center justify-between text-xl font-bold">
         <span className="cursor-pointer">
           <FaBars />
@@ -74,7 +74,7 @@ const MobileNavbar = () => {
             className="block cursor-pointer relative"
           >
             <BiCart size="25px" />
-            <span className="absolute top-[-10px] right-[-13px] bg-red-700 text-white px-1.5 rounded-md text-sm">
+            <span className="absolute top-[-12px] right-[-13px] bg-red-700 text-white px-1 rounded-md text-sm">
               {numberOfAmounts === 0 ? null : numberOfAmounts}
             </span>
           </span>

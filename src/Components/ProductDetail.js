@@ -1,30 +1,46 @@
 import React, { useState } from "react";
 import data from "../db.json";
 import { useParams, useNavigate } from "react-router-dom";
-
+// Toastify
+import { toast } from "react-toastify";
 // Layout
 import DetailLayout from "../Layout/DetailLayout";
-
 // Context
 import { useCart } from "../Providers/Context/cart_context";
 import { useFilter } from "../Providers/Context/filter_context";
-
 // Icons
 import { FiChevronLeft } from "react-icons/fi";
 import { BiCart } from "react-icons/bi";
 import { FiChevronDown } from "react-icons/fi";
+// Components
 import ProductDetailButtons from "./ProductDetailButtons";
+import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../actions";
 
 const ProductDetail = () => {
   // useState
+  const [isFavorite, setIsFavorite] = useState(false);
   const [selectedSize, setSelectedSize] = useState(null);
   const [showDescription, setShowDescription] = useState(false);
 
+  const { dispatch } = useFilter();
   const { numberOfAmounts } = useCart();
   const id = +useParams().id;
   const product = data.find((i) => i.id === id);
   const sizeList = product.size;
   const navigate = useNavigate();
+
+  const handleFavorites = () => {
+    if (!isFavorite) {
+      toast.success("Added to favorites");
+      setIsFavorite(!isFavorite);
+      dispatch({ type: ADD_TO_FAVORITES, payload: product });
+    }
+    if (isFavorite) {
+      toast.error("Remove from favorites");
+      setIsFavorite(!isFavorite);
+      dispatch({ type: REMOVE_FROM_FAVORITES, payload: product });
+    }
+  };
 
   if (product)
     return (
@@ -37,7 +53,7 @@ const ProductDetail = () => {
               </span>
               <span className="block cursor-pointer relative">
                 <BiCart size="25px" />
-                <span className="absolute top-[-10px] right-[-13px] bg-red-700 text-white px-1.5 rounded-md text-sm">
+                <span className="absolute top-[-12px] right-[-13px] bg-red-700 text-white px-1 rounded-md text-sm">
                   {numberOfAmounts === 0 ? null : numberOfAmounts}
                 </span>
               </span>
@@ -91,7 +107,9 @@ const ProductDetail = () => {
             </div>
             <ProductDetailButtons
               selectedSize={selectedSize}
+              isFavorite={isFavorite}
               product={product}
+              handleFavorites={handleFavorites}
             />
           </div>
         </section>

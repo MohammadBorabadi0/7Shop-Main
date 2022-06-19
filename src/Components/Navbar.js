@@ -26,9 +26,9 @@ const Navbar = () => {
     dispatch({ type: CLEAR_SEARCH_BOX });
   };
 
-  //   640px to up
   return (
     <>
+      {/* 640px to up */}
       <header className="hidden md:flex items-center justify-between bg-primary sticky top-0 border-b px-3 py-2 mb-5 z-10">
         {/* Logo */}
         <Link to="/">
@@ -89,7 +89,7 @@ const Navbar = () => {
             className="block cursor-pointer relative"
           >
             <BiCart size="25px" />
-            <span className="absolute top-[-10px] right-[-13px] bg-red-700 text-white px-1.5 rounded-md text-sm">
+            <span className="absolute top-[-12px] right-[-13px] bg-red-700 text-white px-1 rounded-md text-sm">
               {numberOfAmounts === 0 ? null : numberOfAmounts}
             </span>
           </span>
