@@ -10,6 +10,7 @@ import ProductItem from "./ProductItem";
 import Layout from "../Layout/Layout";
 // Context
 import { useFilter } from "../Providers/Context/filter_context";
+import Sort from "./Sort";
 
 const ProductList = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -28,14 +29,16 @@ const ProductList = () => {
           >
             {showFilter ? "Hide Filters" : "Show Filters"} <BiSliderAlt />
           </button>
-          Sort
+          <Sort />
         </div>
       </div>
       <main className="flex gap-4">
         {showFilter ? <Filter /> : null}
         <section className="flex-[5_5_0%]">
           <div
-            className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${
+            className={`${
+              filtered_products.length ? "grid" : "flex"
+            } grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${
               !showFilter ? "xl:grid-cols-4" : null
             } gap-x-2 gap-y-8 px-3 xl:px-0`}
           >
@@ -44,7 +47,7 @@ const ProductList = () => {
                 <ProductItem key={item.id} product={item} index={index} />
               ))
             ) : (
-              <div className="font-medium p-1">
+              <div className="font-medium p-2 text-lg flex-1">
                 <h2>Sorry, no products matched your search.</h2>
               </div>
             )}

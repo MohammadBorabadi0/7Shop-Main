@@ -10,6 +10,7 @@ import {
   LOAD_PRODUCTS,
   REMOVE_APPLIED_FILTERS,
   REMOVE_FROM_FAVORITES,
+  SORT_PRODUCTS,
   UPDATE_FILTERS,
   UPDATE_SORT,
 } from "../../actions";
@@ -69,6 +70,10 @@ const filter_reducer = (state, action) => {
       return { ...state, filtered_products: tempProducts };
     }
     case UPDATE_SORT: {
+      const { name, value } = action.payload;
+      return { ...state, [name]: value };
+    }
+    case SORT_PRODUCTS: {
       const { filtered_products, sort } = state;
       let tempProducts = [...filtered_products];
 
