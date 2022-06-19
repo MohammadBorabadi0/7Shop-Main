@@ -11,6 +11,7 @@ import Layout from "../Layout/Layout";
 // Context
 import { useFilter } from "../Providers/Context/filter_context";
 import Sort from "./Sort";
+import FilterByBrand from "./FilterByBrand";
 
 const ProductList = () => {
   const [showFilter, setShowFilter] = useState(false);
@@ -32,6 +33,7 @@ const ProductList = () => {
           <Sort />
         </div>
       </div>
+      <FilterByBrand />
       <main className="flex gap-4">
         {showFilter ? <Filter /> : null}
         <section className="flex-[5_5_0%]">
