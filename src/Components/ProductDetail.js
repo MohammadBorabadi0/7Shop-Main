@@ -52,7 +52,7 @@ const ProductDetail = () => {
                 <FiChevronLeft />
               </span>
               <span className="block cursor-pointer relative">
-                <BiCart size="25px" />
+                <BiCart size="25px" onClick={() => navigate("/cart")} />
                 <span className="absolute top-[-12px] right-[-13px] bg-red-700 text-white px-1 rounded-md text-sm">
                   {numberOfAmounts === 0 ? null : numberOfAmounts}
                 </span>
@@ -77,7 +77,7 @@ const ProductDetail = () => {
                   <button
                     key={index}
                     className={`px-2 py-1 bg-gray-100 shadow-lg rounded-md font-semibold text-lg ${
-                      selectedSize === item && "bg-orange-600 text-white"
+                      selectedSize === item && "bg-orange-700 text-white"
                     }`}
                     onClick={() => setSelectedSize(item)}
                   >

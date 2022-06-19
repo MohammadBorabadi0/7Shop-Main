@@ -9,8 +9,8 @@ import { Navigate, Route, Routes } from "react-router-dom";
 // Components
 import ProductList from "./Components/ProductList";
 import ProductDetail from "./Components/ProductDetail";
-import Cart from "./Components/Cart";
 import FavoriteList from "./Components/FavoriteList";
+import CartPage from "./Pages/CartPage";
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
       <ToastContainer />
       <Routes>
         <Route path="favorites" element={<FavoriteList />} />
-        <Route path="cart" element={<Cart />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="product/:id" element={<ProductDetail />} />
         <Route path="/" element={<ProductList />} />
         <Route path="*" element={<Navigate to="/" replace />} />
