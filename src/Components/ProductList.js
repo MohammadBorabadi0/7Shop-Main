@@ -12,9 +12,11 @@ import Layout from "../Layout/Layout";
 import { useFilter } from "../Providers/Context/filter_context";
 import Sort from "./Sort";
 import FilterByBrand from "./FilterByBrand";
+import FilterMobile from "./FilterMobile";
 
 const ProductList = () => {
   const [showFilter, setShowFilter] = useState(false);
+  const [showFilterMobile, setShowFilterMobile] = useState(false);
   const { filtered_products } = useFilter();
 
   return (
@@ -32,7 +34,20 @@ const ProductList = () => {
           </button>
           <Sort />
         </div>
+        <div
+          className="flex lg:hidden items-center gap-2 border border-slate-400 rounded-full px-4 py-1 cursor-pointer"
+          onClick={() => setShowFilterMobile(true)}
+        >
+          Filter
+          <BiSliderAlt />
+        </div>
       </div>
+      {showFilterMobile && (
+        <FilterMobile
+          showFilterMobile={showFilterMobile}
+          setShowFilterMobile={setShowFilterMobile}
+        />
+      )}
       <FilterByBrand />
       <main className="flex gap-4">
         {showFilter ? <Filter /> : null}
