@@ -39,9 +39,15 @@ const ProductList = () => {
               !showFilter ? "xl:grid-cols-4" : null
             } gap-x-2 gap-y-8 px-3 xl:px-0`}
           >
-            {filtered_products.map((item, index) => (
-              <ProductItem key={item.id} product={item} index={index} />
-            ))}
+            {filtered_products.length ? (
+              filtered_products.map((item, index) => (
+                <ProductItem key={item.id} product={item} index={index} />
+              ))
+            ) : (
+              <div className="font-medium p-1">
+                <h2>Sorry, no products matched your search.</h2>
+              </div>
+            )}
           </div>
         </section>
       </main>

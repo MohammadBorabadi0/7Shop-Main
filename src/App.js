@@ -2,6 +2,7 @@ import React from "react";
 
 // Toastify
 import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 // React-Router-Dom
 import { Route, Routes } from "react-router-dom";
