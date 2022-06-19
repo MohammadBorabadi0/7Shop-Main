@@ -3,16 +3,18 @@ import { Link } from "react-router-dom";
 // Icons
 import { IoClose } from "react-icons/io5";
 import { BsFillTrashFill } from "react-icons/bs";
-import { BiPlus, BiMinus, BiPulse } from "react-icons/bi";
+import { BiPlus, BiMinus } from "react-icons/bi";
 // Actions
 import { DECREASE, INCREASE, REMOVE_FROM_CART } from "../actions";
 // Layout
 import Layout from "../Layout/Layout";
 // Context
 import { useCart } from "../Providers/Context/cart_context";
+import { useUserContext } from "../Providers/Context/user_context";
 
 const Cart = () => {
   const { cart, dispatch, total } = useCart();
+  const { myUser, loginWithRedirect } = useUserContext();
 
   if (!cart.length) {
     return (
@@ -155,12 +157,21 @@ const Cart = () => {
                 <span>${total}</span>
               </div>
               <div className="flex flex-col gap-3 items-center lg:items-start">
-                <Link
-                  to=""
-                  className="bg-orange-500 py-1.5 rounded-md text-white font-medium text-center w-full"
-                >
-                  Proceed To Checkout
-                </Link>
+                {myUser ? (
+                  <Link
+                    className="bg-orange-500 py-1.5 rounded-md text-white font-medium text-center w-full"
+                    to="/checkout"
+                  >
+                    Proceed To Checkout
+                  </Link>
+                ) : (
+                  <button
+                    className="bg-orange-500 py-1.5 rounded-md text-white font-medium text-center w-full"
+                    onClick={loginWithRedirect}
+                  >
+                    Login
+                  </button>
+                )}
                 <Link
                   to=""
                   className="bg-blue-600 py-1.5 rounded-md text-white font-medium text-center w-full"

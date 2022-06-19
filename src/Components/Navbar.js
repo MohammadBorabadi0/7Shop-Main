@@ -8,11 +8,14 @@ import { IoClose } from "react-icons/io5";
 // Context
 import { useFilter } from "../Providers/Context/filter_context";
 import { useCart } from "../Providers/Context/cart_context";
+import { useUserContext } from "../Providers/Context/user_context";
+// Actions
 import { CLEAR_SEARCH_BOX } from "../actions";
 // Components
 import Search from "./Search";
 
 const Navbar = () => {
+  const { loginWithRedirect, myUser, logout } = useUserContext();
   const { dispatch } = useFilter();
   const { numberOfAmounts } = useCart();
   const navigate = useNavigate();
@@ -57,18 +60,42 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <button className="hover:text-orange-500 transition-colors duration-100">
-              Login
-            </button>
+            {myUser && (
+              <button
+                className="hover:text-orange-500 transition-colors duration-100"
+                onClick={() => navigate("/checkout")}
+              >
+                Checkout
+              </button>
+            )}
+          </li>
+          <li>
+            {myUser ? (
+              <button
+                className="hover:text-orange-500 transition-colors duration-100"
+                onClick={() => logout({ returnTo: window.location.origin })}
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                className="hover:text-orange-500 transition-colors duration-100"
+                onClick={loginWithRedirect}
+              >
+                Login
+              </button>
+            )}
           </li>
         </ul>
         <div className="flex items-center gap-4">
           <button onClick={() => navigate("/favorites")}>
             <BiHeart size="25px" />
           </button>
-          <button onClick={() => navigate("/profile")}>
-            <BiUser size="25px" />
-          </button>
+          {myUser && (
+            <button onClick={() => navigate("/profile")}>
+              <BiUser size="25px" />
+            </button>
+          )}
           {currentPathname === "/" ? (
             !activeSearchBox ? (
               <BiSearch

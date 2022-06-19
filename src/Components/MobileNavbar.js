@@ -1,21 +1,27 @@
 import React, { useState } from "react";
-import { useNavigate, Link, NavLink } from "react-router-dom";
 
+// React-Router-Dom
+import { useNavigate, Link, NavLink } from "react-router-dom";
 // Icons
 import { FaBars } from "react-icons/fa";
 import { BiSearch, BiHeart, BiCart } from "react-icons/bi";
 import { HiUserRemove, HiUserAdd } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 // Context
+import { useUserContext } from "../Providers/Context/user_context";
 import { useCart } from "../Providers/Context/cart_context";
 import { useFilter } from "../Providers/Context/filter_context";
+// Actions
 import { CLEAR_SEARCH_BOX } from "../actions";
+// Utils
 import { NavList } from "../utils/helper";
+// Components
 import Search from "./Search";
 
 const MobileNavbar = () => {
   const { numberOfAmounts } = useCart();
   const { dispatch } = useFilter();
+  const { loginWithRedirect, myUser, logout } = useUserContext();
   const currentPathname = window.location.pathname;
   const navigate = useNavigate();
 
@@ -49,9 +55,18 @@ const MobileNavbar = () => {
               <BiHeart size="25px" />
             </button>
             <div className="flex md:hidden items-center">
-              <button className="flex items-center gap-2">
-                <HiUserAdd size="25px" />
-              </button>
+              {myUser ? (
+                <button className="flex items-center gap-2">
+                  <HiUserRemove
+                    size="25px"
+                    onClick={() => logout({ returnTo: window.location.origin })}
+                  />
+                </button>
+              ) : (
+                <button className="flex items-center gap-2">
+                  <HiUserAdd size="25px" onClick={loginWithRedirect} />
+                </button>
+              )}
             </div>
           </section>
           {currentPathname === "/" ? (
