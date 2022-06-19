@@ -9,3 +9,10 @@ export const getUniqueValue = (data, type) => {
   }
   return [...new Set(unique)];
 };
+
+export const NavList = [
+  { id: 0, icon: "fa-solid fa-house", link: "/" },
+  { id: 1, icon: "fa-solid fa-heart", link: "/favorites" },
+  { id: 2, icon: "fa-solid fa-basket-shopping", link: "/cart" },
+  { id: 3, icon: "fa-solid fa-user", link: "/profile" },
+];

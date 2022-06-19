@@ -3,6 +3,7 @@ import {
   FILTER_PRODUCTS,
   LOAD_PRODUCTS,
   SORT_PRODUCTS,
+  UPDATE_FILTERS,
   UPDATE_SORT,
 } from "../../actions";
 
@@ -53,8 +54,22 @@ const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: { name, value } });
   };
 
+  const updateFilters = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    // Size
+    if (name === "size") {
+      value = e.target.dataset.size;
+    }
+
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+  };
+
   return (
-    <FilterContext.Provider value={{ ...state, dispatch, updateSort }}>
+    <FilterContext.Provider
+      value={{ ...state, dispatch, updateSort, updateFilters }}
+    >
       {children}
     </FilterContext.Provider>
   );
