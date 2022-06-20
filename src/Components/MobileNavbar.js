@@ -17,6 +17,7 @@ import { CLEAR_SEARCH_BOX } from "../actions";
 import { NavList } from "../utils/helper";
 // Components
 import Search from "./Search";
+import Menu from "./Menu";
 
 const MobileNavbar = () => {
   const { numberOfAmounts } = useCart();
@@ -28,6 +29,7 @@ const MobileNavbar = () => {
   //   useState
   const [activeSearchBox, setActiveSearchBox] = useState(false);
   const [activeNavList, setActiveNavList] = useState(NavList[0].id);
+  const [activeMenu, setActiveMenu] = useState(false);
 
   const handleToggle = () => {
     setActiveSearchBox(!activeSearchBox);
@@ -39,7 +41,10 @@ const MobileNavbar = () => {
       {/* {0-640px} */}
       <header className="flex md:hidden sticky bg-primary top-0 py-3 px-5 mb-5 items-center justify-between text-xl font-bold">
         <span className="cursor-pointer">
-          <FaBars />
+          <FaBars onClick={() => setActiveMenu(true)} />
+          {activeMenu && (
+            <Menu activeMenu={activeMenu} setActiveMenu={setActiveMenu} />
+          )}
         </span>
         <Link to="/">
           <h2 className="text-2xl font-semibold cursor-pointer">
