@@ -7,11 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 // React-Router-Dom
 import { Navigate, Route, Routes } from "react-router-dom";
 // Components
-import ProductList from "./Components/ProductList";
 import ProductDetail from "./Components/ProductDetail";
 import FavoriteList from "./Components/FavoriteList";
 import CartPage from "./Pages/CartPage";
 import ProfilePage from "./Pages/ProfilePage";
+import ProductListPage from "./Pages/ProductListPage";
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
         <Route path="favorites" element={<FavoriteList />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="product/:id" element={<ProductDetail />} />
-        <Route path="/" element={<ProductList />} />
+        <Route path="/" element={<ProductListPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>

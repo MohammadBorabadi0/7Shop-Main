@@ -90,6 +90,7 @@ const filter_reducer = (state, action) => {
     case CLEAR_FILTERS: {
       return {
         ...state,
+        appliedFilters: [],
         filters: { gender: "", brand: "", category: "", size: "", search: "" },
         sort: "lowest",
       };
