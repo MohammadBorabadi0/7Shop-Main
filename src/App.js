@@ -16,6 +16,7 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import PrivateRoute from "./Components/PrivateRoute";
 import PaymentPage from "./Pages/PaymentPage";
 import AboutPage from "./Pages/AboutPage";
+import Footer from "./Components/Footer";
 
 const App = () => {
   return (
@@ -23,11 +24,18 @@ const App = () => {
       <ToastContainer />
       <Routes>
         <Route path="about" element={<AboutPage />} />
-        <Route path="payment" element={<PaymentPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="favorites" element={<FavoriteList />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="product/:id" element={<ProductDetail />} />
+        <Route
+          path="payment"
+          element={
+            <PrivateRoute>
+              <PaymentPage />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="checkout"
           element={
@@ -39,6 +47,7 @@ const App = () => {
         <Route path="/" element={<ProductListPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      {/* <Footer /> */}
     </>
   );
 };

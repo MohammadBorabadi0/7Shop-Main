@@ -7,11 +7,13 @@ import { BiPlus, BiMinus } from "react-icons/bi";
 // Actions
 import { DECREASE, INCREASE, REMOVE_FROM_CART } from "../actions";
 // Layout
-import Layout from "../Layout/Layout";
+import DetailLayout from "../Layout/DetailLayout";
 // Context
 import { useCart } from "../Providers/Context/cart_context";
 import { useUserContext } from "../Providers/Context/user_context";
+// Components
 import CartSummary from "./CartSummary";
+import MobileNavbar from "./MobileNavbar";
 
 const Cart = () => {
   const { cart, dispatch, total } = useCart();
@@ -20,7 +22,8 @@ const Cart = () => {
   if (!cart.length) {
     return (
       <section className="hidden sm:flex">
-        <Layout>
+        <DetailLayout>
+          <MobileNavbar />
           <section className="flex flex-col gap-5 pt-6">
             <div className="flex justify-center">
               <img
@@ -44,14 +47,15 @@ const Cart = () => {
               </Link>
             </div>
           </section>
-        </Layout>
+        </DetailLayout>
       </section>
     );
   }
 
   return (
     <section className="hidden sm:flex">
-      <Layout>
+      <DetailLayout>
+        <MobileNavbar />
         <header className="px-3">
           <h2 className="text-xl font-semibold">My Cart</h2>
         </header>
@@ -135,7 +139,7 @@ const Cart = () => {
             total={total}
           />
         </section>
-      </Layout>
+      </DetailLayout>
     </section>
   );
 };

@@ -7,7 +7,7 @@ import { AiOutlineExclamationCircle } from "react-icons/ai";
 // Formik
 import { useFormik } from "formik";
 // Layout
-import Layout from "../Layout/Layout";
+import DetailLayout from "../Layout/DetailLayout";
 // Context
 import { useCart } from "../Providers/Context/cart_context";
 import { useUserContext } from "../Providers/Context/user_context";
@@ -15,6 +15,7 @@ import { useUserContext } from "../Providers/Context/user_context";
 import { useNavigate } from "react-router-dom";
 // Components
 import CartSummary from "../Components/CartSummary";
+import MobileNavbar from "../Components/MobileNavbar";
 
 const CheckoutPage = () => {
   const { total, cart } = useCart();
@@ -64,25 +65,29 @@ const CheckoutPage = () => {
 
   if (!cart.length) {
     return (
-      <Layout>
-        <div className="flex flex-col items-center gap-4 py-20">
-          <h2 className="text-3xl font-semibold text-gray-700">
-            Your cart is empty !
-          </h2>
-          <button
-            onClick={() => navigate("/")}
-            className="bg-orange-500 text-white text-lg px-4 py-1 rounded-md"
-          >
-            Fill it
-          </button>
-        </div>
-      </Layout>
+      <DetailLayout>
+        <MobileNavbar />
+        <section className="py-20">
+          <div className="flex flex-col items-center gap-4">
+            <h2 className="text-3xl font-semibold text-gray-700">
+              Your cart is empty !
+            </h2>
+            <button
+              onClick={() => navigate("/")}
+              className="bg-orange-500 text-white text-lg px-4 py-1 rounded-md"
+            >
+              Fill it
+            </button>
+          </div>
+        </section>
+      </DetailLayout>
     );
   }
 
   return (
     <section className="flex">
-      <Layout>
+      <DetailLayout>
+        <MobileNavbar />
         <header className="px-3">
           <h2 className="text-xl font-semibold">Checkout</h2>
         </header>
@@ -201,7 +206,7 @@ const CheckoutPage = () => {
                 <button
                   type="submit"
                   disabled={!isValid}
-                  className={`flex items-center gap-4 justify-between bg-orange-500 py-1.5 rounded-md text-white font-medium w-full text-center hover:bg-orange-600 transition-colors duration-200 lg:w-fit lg:px-20 disabled:opacity-50 disabled:cursor-not-allowed`}
+                  className="flex items-center justify-center gap-4 bg-orange-500 py-1.5 rounded-md text-white font-medium w-full text-center hover:bg-orange-600 transition-colors duration-200 lg:w-fit lg:px-20 disabled:opacity-50 disabled:cursor-not-allowed"
                   onClick={handlePayment}
                 >
                   {loading ? (
@@ -223,7 +228,7 @@ const CheckoutPage = () => {
             myUser={myUser}
           />
         </section>
-      </Layout>
+      </DetailLayout>
     </section>
   );
 };
