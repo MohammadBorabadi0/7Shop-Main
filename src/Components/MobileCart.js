@@ -11,6 +11,7 @@ import { useUserContext } from "../Providers/Context/user_context";
 // React-Router-Dom
 import { Link, useNavigate } from "react-router-dom";
 import { DECREASE, INCREASE, REMOVE_FROM_CART } from "../actions";
+import CartSummary from "./CartSummary";
 
 const MobileCart = () => {
   const { cart, dispatch, total } = useCart();
@@ -120,59 +121,11 @@ const MobileCart = () => {
           </div>
         ))}
       </section>
-      <section className="flex flex-col bg-white shadow-md rounded-lg p-3 lg:px-4 h-fit">
-        <div className="flex flex-col gap-4">
-          <div>
-            <h2 className="font-semibold text-lg">Order Summary</h2>
-          </div>
-          <div className="flex items-center border rounded-md pl-2 w-full sm:w-fit lg:w-full text-sm sm:text-base">
-            <input
-              type="text"
-              placeholder="Enter your promo code"
-              className="flex-1 focus:outline-none font-medium"
-            />
-            <button className="bg-blue-600 border border-blue-600 text-white cursor-pointer rounded-md px-2 py-1.5">
-              Apply
-            </button>
-          </div>
-          <div className="flex justify-between items-center font-medium text-lg">
-            <p>SubTotal</p>
-            <span>${total}</span>
-          </div>
-          <div className="flex justify-between items-center text-slate-500 text-sm">
-            <p>Discount</p>
-            <span>0</span>
-          </div>
-          <hr />
-          <div className="flex justify-between items-center text-xl font-semibold">
-            <p>Total : </p>
-            <span>${total}</span>
-          </div>
-          <div className="flex flex-col gap-3">
-            {myUser ? (
-              <Link
-                className="bg-orange-500 py-1.5 rounded-md text-white font-medium text-center w-full"
-                to="/checkout"
-              >
-                Proceed To Checkout
-              </Link>
-            ) : (
-              <button
-                className="bg-orange-500 py-1.5 rounded-md text-white font-medium text-center w-full"
-                onClick={loginWithRedirect}
-              >
-                Login
-              </button>
-            )}
-            <Link
-              className="bg-blue-500 py-1.5 rounded-md text-white font-medium text-center"
-              to="/"
-            >
-              Coninue Shopping
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CartSummary
+        myUser={myUser}
+        loginWithRedirect={loginWithRedirect}
+        total={total}
+      />
     </div>
   );
 };
