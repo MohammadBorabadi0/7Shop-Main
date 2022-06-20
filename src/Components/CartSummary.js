@@ -4,6 +4,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CartSummary = ({ total, myUser, loginWithRedirect }) => {
+  const currentPathname = window.location.pathname;
+
   return (
     <div className="flex-1 bg-white shadow-md rounded-xl p-3 lg:px-4 h-fit">
       <section className="flex flex-col gap-4">
@@ -33,7 +35,11 @@ const CartSummary = ({ total, myUser, loginWithRedirect }) => {
           <p>Total :</p>
           <span>${total}</span>
         </div>
-        <div className="flex flex-col gap-3 items-center lg:items-start">
+        <div
+          className={`${
+            currentPathname === "/checkout" ? "hidden" : "flex"
+          } flex-col gap-3 items-center lg:items-start`}
+        >
           {myUser ? (
             <Link
               className="bg-orange-500 py-1.5 rounded-md text-white font-medium text-center w-full"
@@ -50,7 +56,7 @@ const CartSummary = ({ total, myUser, loginWithRedirect }) => {
             </button>
           )}
           <Link
-            to=""
+            to="/"
             className="bg-blue-600 py-1.5 rounded-md text-white font-medium text-center w-full"
           >
             Continue Shopping

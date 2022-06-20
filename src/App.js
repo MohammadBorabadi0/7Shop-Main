@@ -12,12 +12,14 @@ import FavoriteList from "./Components/FavoriteList";
 import CartPage from "./Pages/CartPage";
 import ProfilePage from "./Pages/ProfilePage";
 import ProductListPage from "./Pages/ProductListPage";
+import CheckoutPage from "./Pages/CheckoutPage";
 
 const App = () => {
   return (
     <>
       <ToastContainer />
       <Routes>
+        <Route path="checkout" element={<CheckoutPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="favorites" element={<FavoriteList />} />
         <Route path="cart" element={<CartPage />} />
