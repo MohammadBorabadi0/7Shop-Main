@@ -6,9 +6,9 @@ import Layout from "../Layout/Layout";
 import { useUserContext } from "../Providers/Context/user_context";
 
 const ProfilePage = () => {
-  const { myUser } = useUserContext();
+  const { myUser, loginWithRedirect } = useUserContext();
 
-  if (myUser)
+  if (myUser) {
     return (
       <Layout>
         <section className="px-6 xl:px-3">
@@ -31,6 +31,21 @@ const ProfilePage = () => {
         </section>
       </Layout>
     );
+  } else {
+    return (
+      <Layout>
+        <div className="flex flex-col items-center gap-4 pt-6">
+          <h2 className="text-lg font-medium">You are not logged in yet</h2>
+          <button
+            onClick={loginWithRedirect}
+            className="font-medium bg-orange-500 text-white px-6 py-1 w-fit rounded-md"
+          >
+            Login
+          </button>
+        </div>
+      </Layout>
+    );
+  }
 };
 
 export default ProfilePage;

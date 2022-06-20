@@ -6,7 +6,7 @@ import Layout from "../Layout/Layout";
 const AboutPage = () => {
   return (
     <Layout>
-      <header className="mb-4 lg:mb-0">
+      <header className="mb-6">
         <h2 className="text-xl font-semibold">About Us</h2>
       </header>
       <section className="flex flex-col lg:flex-row gap-10">
