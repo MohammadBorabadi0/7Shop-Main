@@ -96,18 +96,18 @@ const MobileNavbar = () => {
         </div>
       </header>
       <div className="sm:hidden">{activeSearchBox ? <Search /> : null}</div>
-      <nav className="sm:hidden fixed bottom-0 left-0 right-0 w-full z-10 bg-white shadow-xl rounded-3xl px-3">
+      <nav className="sm:hidden fixed bottom-0 left-0 right-0 w-full z-10 bg-white shadow-xl rounded-t-3xl px-3">
         <ul className="flex items-center justify-between px-12 py-4 text-lg">
           {NavList.map((item, index) => (
             <li key={item.id}>
-              <NavLink to={item.link} onClick={() => setActiveNavList(item.id)}>
-                <i
-                  className={`${item.icon} ${
-                    index !== activeNavList
-                      ? "text-slate-400"
-                      : "bg-slate-900 text-white p-2 rounded-md"
-                  }`}
-                ></i>
+              <NavLink
+                to={item.link}
+                onClick={() => setActiveNavList(index)}
+                className={(active) =>
+                  active.isActive ? "text-black" : "text-slate-400"
+                }
+              >
+                <i className={`${item.icon}`}></i>
               </NavLink>
             </li>
           ))}
@@ -118,3 +118,9 @@ const MobileNavbar = () => {
 };
 
 export default MobileNavbar;
+
+// className={`${item.icon} ${
+//   index !== activeNavList
+//     ? "text-slate-400"
+//     : "bg-slate-900 text-white p-2 rounded-md"
+// }`}
