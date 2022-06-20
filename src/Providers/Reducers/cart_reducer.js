@@ -3,6 +3,7 @@ import React from "react";
 // Actions
 import {
   ADD_TO_CART,
+  CLEAR_CART,
   DECREASE,
   INCREASE,
   REMOVE_FROM_CART,
@@ -47,6 +48,9 @@ const cart_reducer = (state, action) => {
       );
       updatedCart[findIndex].quantity--;
       return { ...state, cart: updatedCart };
+    }
+    case CLEAR_CART: {
+      return { ...state, cart: [] };
     }
     default: {
       return state;

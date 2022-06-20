@@ -14,12 +14,14 @@ import ProfilePage from "./Pages/ProfilePage";
 import ProductListPage from "./Pages/ProductListPage";
 import CheckoutPage from "./Pages/CheckoutPage";
 import PrivateRoute from "./Components/PrivateRoute";
+import PaymentPage from "./Pages/PaymentPage";
 
 const App = () => {
   return (
     <>
       <ToastContainer />
       <Routes>
+        <Route path="payment" element={<PaymentPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="favorites" element={<FavoriteList />} />
         <Route path="cart" element={<CartPage />} />

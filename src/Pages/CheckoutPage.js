@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // validation
 import { validationSchema } from "../Components/validateCheckoutForm";
@@ -11,15 +11,17 @@ import Layout from "../Layout/Layout";
 // Context
 import { useCart } from "../Providers/Context/cart_context";
 import { useUserContext } from "../Providers/Context/user_context";
-// React-Router-Dom 
+// React-Router-Dom
 import { useNavigate } from "react-router-dom";
-// Components 
+// Components
 import CartSummary from "../Components/CartSummary";
 
 const CheckoutPage = () => {
   const { total, cart } = useCart();
   const { loginWithRedirect, myUser } = useUserContext();
   const navigate = useNavigate();
+
+  const [loading, setLoading] = useState(false);
 
   //   initialValues
   const initialValues = {
@@ -50,6 +52,15 @@ const CheckoutPage = () => {
     isValid,
     touched,
   } = formik;
+
+  const handlePayment = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/payment");
+    }, 5000);
+  };
 
   if (!cart.length) {
     return (
@@ -191,8 +202,17 @@ const CheckoutPage = () => {
                   type="submit"
                   disabled={!isValid}
                   className={`flex items-center gap-4 justify-between bg-orange-500 py-1.5 rounded-md text-white font-medium w-full text-center hover:bg-orange-600 transition-colors duration-200 lg:w-fit lg:px-20 disabled:opacity-50 disabled:cursor-not-allowed`}
+                  onClick={handlePayment}
                 >
-                  Proceed To Pay
+                  {loading ? (
+                    <img
+                      src="./assets/images/ring-2.gif"
+                      alt="ring"
+                      className="w-7"
+                    />
+                  ) : (
+                    "Proceed To Pay"
+                  )}
                 </button>
               </div>
             </form>

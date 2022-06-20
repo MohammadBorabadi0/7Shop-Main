@@ -24,10 +24,15 @@ module.exports = {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(0)" },
         },
+        showModal: {
+          "0%": { opacity: "0", transform: "scale(0)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         wiggle: "wiggle .3s ease-in-out forwards",
         navbar: "navbar .3s ease-in-out forwards",
+        showModal: "showModal .7s ease-in-out forwards",
       },
     },
   },
