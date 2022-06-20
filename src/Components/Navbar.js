@@ -56,7 +56,7 @@ const Navbar = () => {
               to="/about"
               className="hover:text-orange-500 transition-colors duration-100"
             >
-              About Us
+              About
             </Link>
           </li>
           <li>

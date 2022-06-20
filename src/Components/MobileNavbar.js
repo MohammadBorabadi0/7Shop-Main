@@ -28,7 +28,6 @@ const MobileNavbar = () => {
 
   //   useState
   const [activeSearchBox, setActiveSearchBox] = useState(false);
-  const [activeNavList, setActiveNavList] = useState(NavList[0].id);
   const [activeMenu, setActiveMenu] = useState(false);
 
   const handleToggle = () => {
@@ -107,7 +106,6 @@ const MobileNavbar = () => {
             <li key={item.id}>
               <NavLink
                 to={item.link}
-                onClick={() => setActiveNavList(index)}
                 className={(active) =>
                   active.isActive ? "text-black" : "text-slate-400"
                 }
