@@ -71,7 +71,7 @@ const FilterMobile = ({ showFilterMobile, setShowFilterMobile }) => {
     return (
       <section className="flex sm:hidden flex-col gap-6 bg-white z-20 fixed inset-0 rounded-t-2xl px-4 pt-6 animate-wiggle overflow-y-auto">
         <div className="flex items-center justify-between">
-          <h2>Filter By</h2>
+          <h2 className="text-xl">Filter By</h2>
           <div className="flex items-center gap-6">
             <button
               className="text-blue-600 font-semibold hover:underline"
@@ -261,7 +261,7 @@ const FilterMobile = ({ showFilterMobile, setShowFilterMobile }) => {
               </div>
             ))}
         </section>
-        <section className="w-full z-10 shadow-xl px-3 py-6 bg-transparent">
+        <section className="w-full z-10 pb-12">
           <button
             className="bg-orange-500 text-white w-full py-1.5 rounded-md"
             onClick={() => setShowFilterMobile(false)}

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 // Icons
 import { MdClose } from "react-icons/md";
-// Context 
+// Context
 import { useUserContext } from "../Providers/Context/user_context";
 
 const Menu = ({ activeMenu, setActiveMenu }) => {
@@ -26,42 +26,42 @@ const Menu = ({ activeMenu, setActiveMenu }) => {
           <MdClose size="30px" />
         </button>
       </div>
-      <ul className="flex flex-col items-center gap-2 text-lg font-medium">
-        <li>
+      <ul className="flex flex-col items-center text-center gap-2 text-lg font-medium">
+        <li className="w-full">
           <Link
             to="/"
-            className="hover:text-orange-500 transition-colors duration-100"
+            className="hover:text-orange-500 transition-colors duration-100 block"
           >
             Home
           </Link>
         </li>
-        <li>
+        <li className="w-full">
           <Link
             to="/favorites"
-            className="hover:text-orange-500 transition-colors duration-100"
+            className="hover:text-orange-500 transition-colors duration-100 block"
           >
             Favorites
           </Link>
         </li>
-        <li>
+        <li className="w-full">
           <Link
             to="/about"
-            className="hover:text-orange-500 transition-colors duration-100"
+            className="hover:text-orange-500 transition-colors duration-100 block"
           >
             About
           </Link>
         </li>
-        <li>
+        <li className="w-full">
           {myUser ? (
             <button
-              className="text-lg font-medium hover:text-orange-500 transition-colors duration-100"
+              className="text-lg font-medium hover:text-orange-500 transition-colors duration-100 w-full"
               onClick={() => logout({ returnTo: window.location.origin })}
             >
               Logout
             </button>
           ) : (
             <button
-              className="text-lg font-medium hover:text-orange-500 transition-colors duration-100"
+              className="text-lg font-medium hover:text-orange-500 transition-colors duration-100 w-full"
               onClick={loginWithRedirect}
             >
               Login
@@ -69,10 +69,10 @@ const Menu = ({ activeMenu, setActiveMenu }) => {
           )}
         </li>
         {myUser && (
-          <li>
+          <li className="w-full">
             <Link
               to="/checkout"
-              className="hover:text-orange-500 transition-colors duration-100"
+              className="hover:text-orange-500 transition-colors duration-100 block"
             >
               Checkout
             </Link>
