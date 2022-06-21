@@ -32,13 +32,17 @@ const Cart = () => {
                 className="w-28"
               />
             </div>
-            <div className="flex justify-center">
+            <div className="text-center">
               <h3 className="text-lg font-medium">
                 Your shopping cart is empty !
               </h3>
             </div>
             <div className="flex flex-col items-center gap-5">
-              <h4>For add product to the cart, you can go to the page below</h4>
+              <div className="text-center text-sm sm:text-base">
+                <h4>
+                  For add product to the cart, you can go to the page below
+                </h4>
+              </div>
               <Link
                 to="/"
                 className="px-4 py-1 bg-orange-500 text-white rounded-md text-lg"

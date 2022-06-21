@@ -16,7 +16,6 @@ import CheckoutPage from "./Pages/CheckoutPage";
 import PrivateRoute from "./Components/PrivateRoute";
 import PaymentPage from "./Pages/PaymentPage";
 import AboutPage from "./Pages/AboutPage";
-import Footer from "./Components/Footer";
 
 const App = () => {
   return (
@@ -47,7 +46,6 @@ const App = () => {
         <Route path="/" element={<ProductListPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-      {/* <Footer /> */}
     </>
   );
 };

@@ -85,7 +85,7 @@ const CheckoutPage = () => {
   }
 
   return (
-    <section className="flex">
+    <section className="flex pb-20">
       <DetailLayout>
         <MobileNavbar />
         <header className="px-3">

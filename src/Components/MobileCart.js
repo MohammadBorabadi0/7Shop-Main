@@ -69,7 +69,7 @@ const MobileCart = () => {
             key={item.id}
             className="flex justify-between items-center bg-white px-2 py-3 rounded-md"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-5">
               <div className="bg-red-200 rounded-xl">
                 <img src={item.imageURL} alt={item.name} className="w-14" />
               </div>

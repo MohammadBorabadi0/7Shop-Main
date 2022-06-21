@@ -27,14 +27,14 @@ const PaymentPage = () => {
         onClick={() => navigate("/")}
       >
         <section
-          className="flex flex-col justify-center items-center gap-4 bg-white px-6 py-10 z-10 rounded-md shadow-lg"
+          className="flex flex-col justify-center items-center gap-4 bg-white px-6 py-10 z-10 rounded-md shadow-lg w-3/4"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex flex-col gap-2 text-center">
-            <h2 className="text-xl font-semibold">
+            <h2 className="sm:text-xl font-semibold">
               Thank You {myUser.given_name}
             </h2>
-            <p className="text-lg font-medium">Your Payment Was Successful!</p>
+            <p className="sm:text-lg font-medium">Your Payment Was Successful!</p>
           </div>
           <p className="text-center">Redirecting To Home Page Shortly</p>
           <button
