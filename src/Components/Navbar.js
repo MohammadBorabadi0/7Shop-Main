@@ -122,7 +122,7 @@ const Navbar = () => {
           </span>
         </div>
       </header>
-      <div className="hidden sm:flex">{activeSearchBox && <Search />}</div>
+      <div className="hidden sm:flex">{activeSearchBox ? <Search /> : null}</div>
     </>
   );
 };

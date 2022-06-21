@@ -106,11 +106,10 @@ const CheckoutPage = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="First Name"
-                      className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${
-                        errors.firstName &&
+                      className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${errors.firstName &&
                         touched.firstName &&
                         "border-2 border-red-600 focus:border-red-600"
-                      }`}
+                        }`}
                     />
                     {errors.firstName && touched.firstName && (
                       <span className="flex items-center gap-1 text-red-600 font-medium">
@@ -128,11 +127,10 @@ const CheckoutPage = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       placeholder="Last Name"
-                      className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${
-                        errors.lastName &&
+                      className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${errors.lastName &&
                         touched.lastName &&
                         "border-2 border-red-600 focus:border-red-600"
-                      }`}
+                        }`}
                     />
                     {errors.lastName && touched.lastName && (
                       <span className="flex items-center gap-1 text-red-600 font-medium">
@@ -142,17 +140,8 @@ const CheckoutPage = () => {
                     )}
                   </div>
                 </div>
-                <div className="flex">
-                  <input
-                    type="text"
-                    name="address"
-                    id="address"
-                    value={values.address}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    placeholder="Enter Address"
-                    className="flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg"
-                  />
+                <div className='flex flex-col gap-1 flex-1 h-fit'>
+                  <input type='text' name='address' id='address' value={values.address} onChange={handleChange} onBlur={handleBlur} placeholder='Enter Address' className='flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-base sm:text-lg' />
                 </div>
                 <div className="flex flex-col gap-1 flex-1 h-fit">
                   <input
@@ -163,11 +152,10 @@ const CheckoutPage = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="Email"
-                    className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${
-                      errors.email &&
+                    className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${errors.email &&
                       touched.email &&
                       "border-2 border-red-600 focus:border-red-600"
-                    }`}
+                      }`}
                   />
                   {errors.email && touched.email && (
                     <span className="flex items-center gap-1 text-red-600 font-medium">
@@ -188,11 +176,10 @@ const CheckoutPage = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="Phone Number"
-                    className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${
-                      errors.phoneNumber &&
+                    className={`flex-1 px-3 py-1.5 border focus:outline-none focus:border-2 focus:border-orange-500 rounded-md font-medium text-lg ${errors.phoneNumber &&
                       touched.phoneNumber &&
                       "border-2 border-red-600 focus:border-red-600"
-                    }`}
+                      }`}
                   />
                   {errors.phoneNumber && touched.phoneNumber && (
                     <span className="flex items-center gap-1 text-red-600 font-medium">

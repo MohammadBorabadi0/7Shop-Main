@@ -12,11 +12,11 @@ const CartSummary = ({ total, myUser, loginWithRedirect }) => {
         <div>
           <h2 className="font-semibold text-lg">Order Summary</h2>
         </div>
-        <div className="flex items-center border rounded-md pl-2 w-full sm:w-fit lg:w-full">
+        <div className="flex items-center border rounded-md pl-2 w-full sm:w-fit lg:w-full text-sm sm:text-base">
           <input
             type="text"
             placeholder="Enter your promo code"
-            className="flex-1 focus:outline-none font-medium"
+            className="focus:outline-none font-medium flex-1"
           />
           <button className="bg-blue-600 border boder-blue-600 text-white cursor-pointer rounded-md px-2 py-1.5">
             Apply
@@ -36,9 +36,8 @@ const CartSummary = ({ total, myUser, loginWithRedirect }) => {
           <span>${total}</span>
         </div>
         <div
-          className={`${
-            currentPathname === "/checkout" ? "hidden" : "flex"
-          } flex-col gap-3 items-center lg:items-start`}
+          className={`${currentPathname === "/checkout" ? "hidden" : "flex"
+            } flex-col gap-3 items-center lg:items-start`}
         >
           {myUser ? (
             <Link

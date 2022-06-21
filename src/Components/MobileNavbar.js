@@ -99,7 +99,7 @@ const MobileNavbar = () => {
           </span>
         </div>
       </header>
-      <div className="sm:hidden">{activeSearchBox ? <Search /> : null}</div>
+      <div className="flex sm:hidden">{activeSearchBox ? <Search /> : null}</div>
       <nav className="sm:hidden fixed bottom-0 left-0 right-0 w-full z-10 bg-white shadow-xl rounded-t-3xl px-3">
         <ul className="flex items-center justify-between px-12 py-4 text-lg">
           {NavList.map((item, index) => (
